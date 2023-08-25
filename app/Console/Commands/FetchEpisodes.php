@@ -73,6 +73,7 @@ class FetchEpisodes extends Command
     private function fetchEpisodesAndCharacters(string $url): void
     {
         $response = $this->makeHttpRequest($url);
+
         if (! isset($response['error'])) {
             $episodes = $response['results'];
             $info = $response['info'];
@@ -93,9 +94,7 @@ class FetchEpisodes extends Command
 
                         foreach ($characters as $characterUrl) {
                             $characterData = $this->makeHttpRequest($characterUrl);
-
                             $character = $this->insertCharacters($characterData);
-
                             $episode->characters()->attach($character->id);
                         }
                     }
@@ -107,17 +106,7 @@ class FetchEpisodes extends Command
             $progressBar->finish();
             $this->newLine();
 
-            if ($info['next'] !== null) {
-                if ($options['all']) {
-                    $this->nextEpisode($info);
-                } else {
-                    $continue = $this->confirm('Continue?', true);
-
-                    if ($continue) {
-                        $this->nextEpisode($info);
-                    }
-                }
-            }
+            $this->next($info, $options);
         }
     }
 
@@ -175,6 +164,27 @@ class FetchEpisodes extends Command
     private function nextEpisode(array $info): void
     {
         $this->info('Next episode: ' . $info['next']);
+
         $this->fetchEpisodesAndCharacters($info['next']);
+    }
+
+    /**
+     * @param array $info
+     * @param array $options
+     * @return void
+     */
+    private function next(array $info, array $options): void
+    {
+        if ($info['next'] !== null) {
+            if ($options['all']) {
+                $this->nextEpisode($info);
+            } else {
+                $continue = $this->confirm('Continue?', true);
+
+                if ($continue) {
+                    $this->nextEpisode($info);
+                }
+            }
+        }
     }
 }
