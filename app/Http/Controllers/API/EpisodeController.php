@@ -17,7 +17,7 @@ class EpisodeController extends Controller
      */
     public function __construct(
         private readonly EpisodeRepositoryInterface $episodeRepository,
-        private readonly EpisodeService $episodeService,
+        private readonly EpisodeService $episodeService
     ) {}
 
     /**

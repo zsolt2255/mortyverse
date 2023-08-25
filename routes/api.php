@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'episodes','as' => 'episodes.'], function () {
+Route::group(['prefix' => 'episodes','as' => 'episodes.'], static function () {
     Route::get('sync', [EpisodeController::class, 'sync'])->name('sync');
     Route::get('{episode}/characters', [EpisodeController::class, 'characters'])->name('characters');
 });

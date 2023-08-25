@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @method static updateOrCreate(array $array, array $array1)
+ * @property mixed $characters
  */
 class Episode extends Model
 {

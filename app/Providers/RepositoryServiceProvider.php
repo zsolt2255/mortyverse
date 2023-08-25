@@ -17,7 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind(EloquentRepositoryInterface::class, EloquentRepository::class);
         $this->app->bind(EpisodeRepositoryInterface::class, EpisodeRepository::class);
@@ -29,7 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }

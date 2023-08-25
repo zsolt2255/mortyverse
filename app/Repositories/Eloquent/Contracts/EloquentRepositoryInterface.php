@@ -19,8 +19,8 @@ interface EloquentRepositoryInterface
     public function create(array $attributes): Model;
 
     /**
-     * @param $id
+     * @param string $id
      * @return Model|null
      */
-    public function find($id): ?Model;
+    public function find(string $id): ?Model;
 }

@@ -17,7 +17,7 @@ class EloquentRepository implements EloquentRepositoryInterface
     protected Model $model;
 
     /**
-     * BaseRepository constructor.
+     * EloquentRepository constructor.
      *
      * @param Model $model
      */
@@ -37,10 +37,10 @@ class EloquentRepository implements EloquentRepositoryInterface
     }
 
     /**
-     * @param $id
+     * @param string $id
      * @return Model|null
      */
-    public function find($id): ?Model
+    public function find(string $id): ?Model
     {
         return $this->model->find($id);
     }

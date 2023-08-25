@@ -14,7 +14,7 @@ class CharacterResourceCollection extends ResourceCollection
      * @param  Request  $request
      * @return array|Arrayable|\JsonSerializable
      */
-    public function toArray($request): array|\JsonSerializable|Arrayable
+    public function toArray(Request $request): array|\JsonSerializable|Arrayable
     {
         return parent::toArray($request);
     }

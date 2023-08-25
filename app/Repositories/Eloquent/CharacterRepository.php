@@ -9,6 +9,9 @@ use App\Repositories\Eloquent\Contracts\CharacterRepositoryInterface;
 
 class CharacterRepository extends EloquentRepository implements CharacterRepositoryInterface
 {
+    /**
+     * @param Character $model
+     */
     public function __construct(Character $model)
     {
         parent::__construct($model);
